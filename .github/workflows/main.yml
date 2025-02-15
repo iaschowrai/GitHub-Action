@@ -36,7 +36,7 @@ jobs:  # Define jobs to be executed as part of the workflow
           context: .  # Path to the Docker build context (current directory)
           file: ./Dockerfile  # Path to the Dockerfile
           push: false  # Set to false as pushing is not required (for now)
-          tags: ghcr.io/${{ github.repository }}:${{ github.run_id }}  # Tag the Docker image with GitHub Container Registry (GHCR) format
+          tags: ghcr.io/${{ github.repository }}/github-action:${{ github.run_id }}  # Tag the Docker image with GitHub Container Registry (GHCR) format
 
           # Note: Docker Hub login and push steps are removed since credentials are not to be used
 
