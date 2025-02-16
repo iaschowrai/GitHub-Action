@@ -11,6 +11,6 @@ public class LiveDataController {
 
     @GetMapping("/live-data")
     public String getLiveData() {
-        return "Live data as of: " + LocalDateTime.now();
+        return "Hello,Irshad";
     }
 }
