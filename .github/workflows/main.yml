@@ -33,19 +33,19 @@ jobs:  # Define jobs to be executed as part of the workflow
       - name: Check if JAR is created  # Ensure the JAR file exists
         run: |
           ls -l target/  # List files in the target directory
-          if [ ! -f target/springdemo-1.0.0.jar ]; then echo "JAR file not found!" && exit 1; fi
-      
+          if [ ! -f target/*.jar ]; then echo "JAR file not found!" && exit 1; fi
 
-      - name: Build Docker image
+      - name: Build Docker image  # Step to build the Docker image
         run: |
           docker build -t springboot-api .
           
-
-
-
-
-
-#      - name: Build Docker Image  # Step to build the Docker image
+          
+          
+          
+          
+          
+          
+          #      - name: Build Docker Image  # Step to build the Docker image
 #        uses: docker/build-push-action@v4  # Action to build and optionally push Docker images
 #        with:
 #          context: .  # Path to the Docker build context (current directory)

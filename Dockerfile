@@ -2,7 +2,7 @@ FROM openjdk:17-jdk
 
 WORKDIR /app
 
-COPY target/springdemo-1.0.0.jar /app/springboot.jar
+COPY target/github-action-build-deploy-0.0.1-SNAPSHOT.jar /app/springboot.jar
 
 EXPOSE 8080
 
