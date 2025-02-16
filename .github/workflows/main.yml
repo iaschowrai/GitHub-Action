@@ -31,8 +31,12 @@ jobs:  # Define jobs to be executed as part of the workflow
           mvn -B package --file pom.xml  # Package the application as a JAR
       - name: Build Docker image
         run: |
-          docker build -t springboot-api
+          docker build -t springboot-api .
           
+
+
+
+
 
 #      - name: Build Docker Image  # Step to build the Docker image
 #        uses: docker/build-push-action@v4  # Action to build and optionally push Docker images
