@@ -29,20 +29,23 @@ jobs:  # Define jobs to be executed as part of the workflow
         run: |
           mvn clean  # Clean previous build artifacts
           mvn -B package --file pom.xml  # Package the application as a JAR
+      - name: Build Docker image
+        run: |
+          docker build -t springboot-api
+          
 
-      - name: Build Docker Image  # Step to build the Docker image
-        uses: docker/build-push-action@v4  # Action to build and optionally push Docker images
-        with:
-          context: .  # Path to the Docker build context (current directory)
-          file: ./Dockerfile  # Path to the Dockerfile
-          push: false  # Set to false as pushing is not required (for now)
-          tags: ghcr.io/${{ github.repository }}/github-action:${{ github.run_id }}  # Tag the Docker image with GitHub Container Registry (GHCR) format
+#      - name: Build Docker Image  # Step to build the Docker image
+#        uses: docker/build-push-action@v4  # Action to build and optionally push Docker images
+#        with:
+#          context: .  # Path to the Docker build context (current directory)
+#          file: ./Dockerfile  # Path to the Dockerfile
+#          push: false  # Set to false as pushing is not required (for now)
+#          tags: ghcr.io/${{ github.repository }}/github-action:${{ github.run_id }}  # Tag the Docker image with GitHub Container Registry (GHCR) format
 
           # Note: Docker Hub login and push steps are removed since credentials are not to be used
-
           # Optional steps can be added to push to GHCR automatically if needed
 
-#          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:${{ github.run_id }}
+          # tags: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-for-beginners:${{ github.run_id }}
 
       # Step 6: Login to Docker Hub using secrets stored in GitHub
 #      - name: Login to Docker Hub
