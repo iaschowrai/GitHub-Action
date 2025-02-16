@@ -29,6 +29,13 @@ jobs:  # Define jobs to be executed as part of the workflow
         run: |
           mvn clean  # Clean previous build artifacts
           mvn -B package --file pom.xml  # Package the application as a JAR
+
+      - name: Check if JAR is created  # Ensure the JAR file exists
+        run: |
+          ls -l target/  # List files in the target directory
+          if [ ! -f target/springdemo-1.0.0.jar ]; then echo "JAR file not found!" && exit 1; fi
+      
+
       - name: Build Docker image
         run: |
           docker build -t springboot-api .
